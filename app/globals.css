@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@source "../src";
+
 
 @theme {
   --color-background: 255 255 255;
@@ -9,9 +11,18 @@
   --color-muted-foreground: 113 113 122;
   --color-border: 228 228 231;
   --color-card: 255 255 255;
+
+  --color-gradient-background: #551622;
+
+
+  --color-neutral: rgb(10 10 10 / 1.0);
+  --color-red: rgb(168 40 60 / 1.0);
+
+  --color-text: rgb(227 221 220 / 1.0);
+  --color-highlight: rgb(235 241 204 / 1.0);
 }
 
-/* Dark mode override */
+
 .dark {
   --color-background: 10 10 10;
   --color-foreground: 250 250 250;
@@ -21,4 +32,13 @@
   --color-muted-foreground: 161 161 170;
   --color-border: 39 39 42;
   --color-card: 24 24 27;
+
+  --color-gradient-background: #113437;
+
+
+  --color-neutral: rgb(168 40 60 / 1.0);
+
+  --color-text: rgb(255 255 255 / 1.0);
+  --color-highlight: rgb(235 241 204 / 1.0);
+
 }
