@@ -5,6 +5,7 @@ import { Providers } from "@/src/providers/theme-provider";
 import { Header, Footer } from '@/src/component/layout';
 
 import { Inter, DM_Sans } from "next/font/google";
+import SubModal from '@/src/component/common/modal/sub-modal';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -27,6 +28,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
       >
         <NextIntlClientProvider messages={messages}>
           <Providers>
+            <SubModal />
             <Header />
             {children}
             <Footer />
