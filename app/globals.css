@@ -3,6 +3,11 @@
 
 
 @theme {
+  --font-smooch: var(--font-smooch);
+  --font-inter: var(--font-inter);
+  --font-dm-sans: var(--font-dm-sans);
+
+
   --color-background: 255 255 255;
   --color-foreground: 10 10 10;
   --color-primary: 99 102 241;
@@ -13,13 +18,24 @@
   --color-card: 255 255 255;
 
   --color-gradient-background: #551622;
+  --color-color-bg: #1b0309;
 
 
   --color-neutral: rgb(10 10 10 / 1.0);
   --color-red: rgb(168 40 60 / 1.0);
 
+  --color-text-white: rgb(255 255 255 / 1.0);
   --color-text: rgb(227 221 220 / 1.0);
   --color-highlight: rgb(235 241 204 / 1.0);
+
+
+  --color-secondary-button-text: rgb(67 66 66 / 1.0);
+
+  --color-secondary-button: #EAE5D9;
+
+  /* line border */
+  --color-line-and-border: rgb(45 20 27 / 1.0);
+
 }
 
 
@@ -34,11 +50,21 @@
   --color-card: 24 24 27;
 
   --color-gradient-background: #113437;
-
+  --color-color-bg: #113437;
 
   --color-neutral: rgb(168 40 60 / 1.0);
 
   --color-text: rgb(255 255 255 / 1.0);
   --color-highlight: rgb(235 241 204 / 1.0);
 
+  /* line border */
+  --color-line-and-border: rgb(13 43 46 / 1.0);
+
+
+}
+
+.container-v2 {
+  padding-left: 32px;
+  padding-right: 32px;
+  min-width: 100%;
 }
