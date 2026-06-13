@@ -1,11 +1,10 @@
+import { ReactNode } from 'react'
+import { Inter, DM_Sans } from "next/font/google";
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
-import { ReactNode } from 'react'
-import { Providers } from "@/src/providers/theme-provider";
-import { Header, Footer } from '@/src/component/layout';
-
-import { Inter, DM_Sans } from "next/font/google";
 import SubModal from '@/src/component/common/modal/sub-modal';
+import { ModalProvider, Providers } from '@/src/providers';
+import { Header, Footer } from '@/src/component/layout';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -28,10 +27,12 @@ export default async function LocaleLayout({ children, params }: { children: Rea
       >
         <NextIntlClientProvider messages={messages}>
           <Providers>
-            <SubModal />
-            <Header />
-            {children}
-            <Footer />
+            <ModalProvider>
+              <SubModal />
+              <Header />
+              {children}
+              <Footer />
+            </ModalProvider>
           </Providers>
         </NextIntlClientProvider>
       </body>

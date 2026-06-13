@@ -3,13 +3,19 @@
 import { ChevronDown } from "lucide-react";
 import TextLink from "../common/TextLink/TextLink";
 import { DATA_HEADER_CONTACT, DATA_HEADER_NAVIGATE } from "./_data";
+import { useModal } from "@/src/providers";
 
 export default function Header() {
+    const { isOpen, toggleModal } = useModal()
+
     const handleModal = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, data?: Array<{ content: string }>) => {
         const element = event.currentTarget
         const rect = element.getBoundingClientRect()
-        console.log(data, rect.width, rect.left)
+
+        toggleModal(rect.width, rect.left)
     }
+
+    console.log(isOpen, "oprn >")
 
     return (
         <header className="flex flex-col w-full">
