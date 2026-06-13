@@ -1,11 +1,15 @@
 import { ReactNode } from 'react'
-import { Inter, DM_Sans } from "next/font/google";
+import { Inter, DM_Sans, Smooch } from "next/font/google";
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
-import SubModal from '@/src/component/common/modal/sub-modal';
 import { ModalProvider, Providers } from '@/src/providers';
 import { Header, Footer } from '@/src/component/layout';
 
+const smooch = Smooch({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-smooch",
+});
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -23,12 +27,11 @@ export default async function LocaleLayout({ children, params }: { children: Rea
   return (
     <html lang={locale} suppressHydrationWarning>
       <body
-        className={`min-h-screen bg-background font-sans antialiased ${inter.className} ${dmSans.className}`}
+        className={`min-h-screen bg-background antialiased ${inter.variable} ${dmSans.variable} ${smooch.variable}`}
       >
         <NextIntlClientProvider messages={messages}>
           <Providers>
             <ModalProvider>
-              <SubModal />
               <Header />
               {children}
               <Footer />
