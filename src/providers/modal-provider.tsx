@@ -3,6 +3,7 @@
 import {
     createContext,
     useContext,
+    useEffect,
     useState,
     ReactNode,
 } from "react";
@@ -85,6 +86,25 @@ export function ModalProvider({ children }: { children: ReactNode }) {
 
         setIsOpen((prev) => !prev);
     };
+
+    useEffect(() => {
+        if (!isOpen) return;
+
+        const handleScroll = () => {
+            closeModal();
+        };
+
+        window.addEventListener("scroll", handleScroll, {
+            passive: true,
+            capture: true,
+        });
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll, {
+                capture: true,
+            });
+        };
+    }, [isOpen]);
 
     return (
         <ModalContext.Provider
