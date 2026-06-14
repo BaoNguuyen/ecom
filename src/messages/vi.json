@@ -2,5 +2,78 @@
     "Home": {
         "title": "Xin chào Việt Nam",
         "description": "Đa ngôn ngữ đang hoạt động"
+    },
+    "Header": {
+        "navigate": {
+            "aboutUs": "Về Chúng Tôi",
+            "contactUs": "Liên Hệ",
+            "freeDesignServices": "Dịch Vụ Thiết Kế Miễn Phí",
+            "faqs": "Câu Hỏi Thường Gặp"
+        },
+        "contact": {
+            "email": "example@shopify.com",
+            "phone": "(+1) 12345678901",
+            "language": "Tiếng Việt (VND đ)"
+        },
+        "popup": {
+            "language": {
+                "label": "Ngôn Ngữ",
+                "english": "Tiếng Anh",
+                "vietnamese": "Tiếng Việt"
+            },
+            "currency": {
+                "label": "Tiền Tệ",
+                "usd": "Hoa Kỳ (USD) $",
+                "vnd": "Việt Nam (VND) đ"
+            },
+            "save": "Lưu"
+        }
+    },
+    "Footer": {
+        "contact": {
+            "needHelp": "Cần hỗ trợ? Gọi ngay!",
+            "phone": "(+84) 123 4567",
+            "address": "Địa chỉ: 75 9th Ave, New York, NY 10011-7006",
+            "email": "Email: example@shopify.com"
+        },
+        "newsletter": {
+            "title": "Giảm 5% cho đơn hàng đầu tiên!",
+            "description": "Tìm hiểu thêm về ưu đãi, khuyến mãi, sự kiện và nhiều hơn nữa.",
+            "placeholder": "Email của bạn",
+            "subscribe": "Đăng Ký"
+        },
+        "slogan": "Mang Sự Tiện Nghi Về Nhà",
+        "benefits": {
+            "warranty": "Bảo Hành 5 Năm",
+            "allInclusive": "Giá Trọn Gói",
+            "delivery": "Giao Hàng Miễn Phí",
+            "return": "Đổi Trả 100 Ngày",
+            "assembly": "Lắp Ráp Miễn Phí",
+            "disposal": "Dịch Vụ Thu Hồi"
+        },
+        "helpInfo": {
+            "label": "Thông Tin Hỗ Trợ",
+            "aboutUs": "Về Chúng Tôi",
+            "faqs": "Câu Hỏi Thường Gặp",
+            "contactUs": "Liên Hệ",
+            "services": "Dịch Vụ",
+            "blogs": "Blog"
+        },
+        "topCollections": {
+            "label": "Bộ Sưu Tập Nổi Bật",
+            "furniture": "Nội Thất",
+            "beds": "Giường Ngủ",
+            "sofas": "Ghế Sofa",
+            "decor": "Trang Trí",
+            "lighting": "Đèn & Chiếu Sáng"
+        },
+        "holidays": {
+            "label": "Dịp Lễ",
+            "christmasShop": "Mua Sắm Giáng Sinh",
+            "thanksgivingShop": "Mua Sắm Lễ Tạ Ơn",
+            "giftsShop": "Cửa Hàng Quà Tặng",
+            "furniture": "Nội Thất",
+            "christmasDecor": "Trang Trí Giáng Sinh"
+        }
     }
 }
