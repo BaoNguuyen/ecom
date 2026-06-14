@@ -20,14 +20,14 @@ const DATA_HEADER_NAVIGATE = [
     },
 ];
 
-type PopupItem = {
+export type PopupItemType = {
     content: string;
     value: string;
 };
 
 export type PopupSectionType = {
     name: string;
-    list: PopupItem[];
+    list: PopupItemType[];
 };
 
 const DATA_HEADER_CONTACT = [
