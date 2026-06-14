@@ -5,14 +5,15 @@ import TextLink from "../common/TextLink/TextLink";
 import { DATA_HEADER_CONTACT, DATA_HEADER_NAVIGATE, PopupSectionType } from "./_data";
 import { useModal } from "@/src/providers";
 import PopupLayout from "./Popup";
+import { useTranslations } from "next-intl";
 
 export default function Header() {
     const { toggleModal } = useModal()
+    const t = useTranslations('Header')
 
     const handleModal = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, data?: PopupSectionType[]) => {
         const element = event.currentTarget;
         const rect = element.getBoundingClientRect();
-
 
         toggleModal(<PopupLayout data={data as PopupSectionType[]} />, {
             rect,
@@ -28,18 +29,21 @@ export default function Header() {
             <div className="container-v2 min-w-full h-[42px] flex items-center justify-between bg-gradient-background">
                 <div className="flex items-center gap-4">
                     {DATA_HEADER_NAVIGATE.map((item) => (
-                        <TextLink key={item.name} link={item.link} text={item.name} />
+                        <TextLink key={item.name} link={item.link} text={t(`navigate.${item.name}`)} />
                     ))}
                 </div>
 
                 <div className="flex items-center gap-4">
                     {DATA_HEADER_CONTACT.map((item) => {
                         const StartIcon = item.icon;
+                        const displayContent = item.type === "language"
+                            ? t('contact.language')
+                            : item.content;
                         return (
                             <TextLink
-                                key={item.content}
+                                key={item.type}
                                 link={item.link}
-                                text={item.content}
+                                text={displayContent}
                                 variant="secondary"
                                 startIcon={<StartIcon size={16} />}
                                 endIcon={item.type === "language" && <ChevronDown size={12} />}
