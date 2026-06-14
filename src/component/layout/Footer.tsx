@@ -8,9 +8,13 @@ import TextLink from "../common/TextLink/TextLink";
 import { ChevronDown } from "lucide-react";
 import { useModal } from "@/src/providers";
 import PopupLayout from "./Popup";
+import { useTranslations } from "next-intl";
 
 export default function Footer() {
     const { toggleModal } = useModal()
+    const t = useTranslations('Footer')
+    const tHeader = useTranslations('Header')
+
     const dataLanguage = DATA_HEADER_CONTACT[DATA_HEADER_CONTACT.length - 1]
     const StartIcon = dataLanguage.icon
 
@@ -18,8 +22,6 @@ export default function Footer() {
         const element = event.currentTarget;
         const rect = element.getBoundingClientRect();
 
-
-        console.log(data, "datadatadatadata")
         toggleModal(
             <PopupLayout data={data} />,
             {
@@ -28,6 +30,13 @@ export default function Footer() {
                 offset: 8
             }
         );
+    }
+
+    // Map section key in _data to translation key
+    const sectionKeyMap: Record<string, string> = {
+        helpInfo: 'helpInfo',
+        topCollections: 'topCollections',
+        holidays: 'holidays',
     }
 
     return (
@@ -41,7 +50,7 @@ export default function Footer() {
                                 width={32}
                                 height={32}
                             />
-                            <span className="text-sm leading-[20px] font-bold">{item.title}</span>
+                            <span className="text-sm leading-[20px] font-bold">{t(`benefits.${item.title}`)}</span>
                         </div>
                     )
                 })}
@@ -51,17 +60,17 @@ export default function Footer() {
                 <div className="absolute inset-0 bg-[url('/images/footer-banner.jpg')] bg-cover bg-center opacity-30 z-10 min-w-full" />
                 <div className="relative flex items-center h-full z-20 gap-x-6">
                     <div className="w-[50%] text-center text-[var(--color-text)]">
-                        <p className="text-[28px] font-semibold">Get 5% off your first order!</p>
-                        <p className="text-[15px]">Learn more about special offers, promotions, events and more.</p>
+                        <p className="text-[28px] font-semibold">{t('newsletter.title')}</p>
+                        <p className="text-[15px]">{t('newsletter.description')}</p>
                     </div>
                     <div className="flex w-[30%] border-[1px] border-secondary-button rounded-lg px-2 py-2 text-[var(--color-text)]">
                         <input
                             type="text"
-                            placeholder="Your email"
+                            placeholder={t('newsletter.placeholder')}
                             className="h-[40px] flex-1 w-full outline-0"
                         />
                         <button className="max-w-[135px] h-[40px] bg-secondary-button text-secondary-button-text/70 rounded-sm cursor-pointer text-[14px] px-[33px] ">
-                            Subscribe
+                            {t('newsletter.subscribe')}
                         </button>
                     </div>
                 </div>
@@ -70,10 +79,10 @@ export default function Footer() {
             <div className="container-v2 flex flex-col w-full pt-14">
                 <div className="grid grid-cols-5 gap-x-12 gap-y-12">
                     <div className="col-span-2 flex flex-col gap-y-1 text-text-white">
-                        <p className="text-[18px] mb-6 ">Need help? Call now!</p>
-                        <p className="font-bold text-[24px] mb-3">(+84) 123 4567</p>
-                        <p className="text-[15px]">Address: 75 9th Ave, New York, NY 10011-7006</p>
-                        <p className="text-[15px]">Email: example@shopify.com</p>
+                        <p className="text-[18px] mb-6 ">{t('contact.needHelp')}</p>
+                        <p className="font-bold text-[24px] mb-3">{t('contact.phone')}</p>
+                        <p className="text-[15px]">{t('contact.address')}</p>
+                        <p className="text-[15px]">{t('contact.email')}</p>
                         <div className="flex gap-4 mt-4">
                             {DATA_FOOTER_SOCIAL_LINK.map((item) => (
                                 <Link key={item.icon} href={item.link} target="_blank">
@@ -89,16 +98,22 @@ export default function Footer() {
                     </div>
 
                     {DATA_FOOTER_MORE_INFOR.map((items, index) => {
-                        const title = Object.keys(items)[0];
-                        const links = items[title as keyof typeof items] || [];
+                        const sectionKey = Object.keys(items)[0];
+                        const links = items[sectionKey as keyof typeof items] || [];
                         return (
                             <div key={index} className="col-span-1">
-                                <p className="text-[18px] mb-6 leading-[20px] text-[var(--color-text)]">{title}</p>
+                                <p className="text-[18px] mb-6 leading-[20px] text-[var(--color-text)]">
+                                    {t(`${sectionKeyMap[sectionKey]}.label`)}
+                                </p>
                                 <ul className="text-text-white">
-                                    {links.map((item) => {
+                                    {(links as { title: string; link: string }[]).map((item) => {
                                         return (
                                             <li className="w-full flex justify-start align-center mb-4" key={item.title}>
-                                                <TextLink link={item.link} text={item.title} className="justify-start" />
+                                                <TextLink
+                                                    link={item.link}
+                                                    text={t(`${sectionKeyMap[sectionKey]}.${item.title}` as any)}
+                                                    className="justify-start"
+                                                />
                                             </li>
                                         )
                                     })}
@@ -108,15 +123,15 @@ export default function Footer() {
                     })}
                 </div>
 
-                <span className="text-center text-text-white text-[56px] leading-[80px] font-bold font-smooch py-6">Bring Comfort Home</span>
+                <span className="text-center text-text-white text-[56px] leading-[80px] font-bold font-smooch py-6">{t('slogan')}</span>
             </div>
 
             <div className="flex items-center justify-between border-t-[1px] border-line-and-border pb-4 pt-2 mx-3">
                 <div className="flex items-center gap-4">
                     <TextLink
-                        key={dataLanguage.content}
+                        key={dataLanguage.type}
                         link={dataLanguage.link}
-                        text={dataLanguage.content}
+                        text={tHeader('contact.language')}
                         variant="secondary"
                         startIcon={<StartIcon size={16} />}
                         endIcon={dataLanguage.type === "language" && <ChevronDown size={12} />}

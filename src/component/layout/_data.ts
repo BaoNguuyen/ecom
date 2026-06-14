@@ -3,19 +3,19 @@ import { Mail, Phone, Globe } from "lucide-react";
 
 const DATA_HEADER_NAVIGATE = [
     {
-        name: "About Us",
+        name: "aboutUs",
         link: "/",
     },
     {
-        name: "Contact Us",
+        name: "contactUs",
         link: "/contact",
     },
     {
-        name: "Free Design Services",
+        name: "freeDesignServices",
         link: "/free-design-services",
     },
     {
-        name: "FAQs",
+        name: "faqs",
         link: "/faqs",
     },
 ];
@@ -45,7 +45,7 @@ const DATA_HEADER_CONTACT = [
     },
     {
         type: "language",
-        content: "English (USD $)",
+        content: "language",
         icon: Globe,
         link: "",
         children: [
@@ -53,11 +53,11 @@ const DATA_HEADER_CONTACT = [
                 name: 'Language',
                 list: [
                     {
-                        content: "English",
+                        content: "english",
                         value: "en",
                     },
                     {
-                        content: "Vietnamese",
+                        content: "vietnamese",
                         value: "vi",
                     },
                 ]
@@ -66,11 +66,11 @@ const DATA_HEADER_CONTACT = [
                 name: 'Currency',
                 list: [
                     {
-                        content: "United States (USD) $ ",
+                        content: "usd",
                         value: "usd",
                     },
                     {
-                        content: "Vietnam (VND) đ",
+                        content: "vnd",
                         value: "vnd",
                     },
                 ]
@@ -87,28 +87,28 @@ const DATA_HEADER_CONTACT = [
 
 const FOOTER_SERVICE_BENEFITS = [
     {
-        title: "5 Years Warranty",
+        title: "warranty",
         icon: 'warranty',
     },
     {
-        title: "All-inclusive Pricing",
+        title: "allInclusive",
         icon: 'allInclusive',
     },
     {
-        title: "Free Delivery", icon: 'delivery',
-
+        title: "delivery",
+        icon: 'delivery',
     },
     {
-        title: "100-Day Returns", icon: 'return',
-
+        title: "return",
+        icon: 'return',
     },
     {
-        title: "Free Assembly", icon: 'asembly',
-
+        title: "assembly",
+        icon: 'asembly',
     },
     {
-        title: "Disposal Service", icon: 'disposal',
-
+        title: "disposal",
+        icon: 'disposal',
     },
 ];
 
@@ -133,98 +133,41 @@ const DATA_FOOTER_SOCIAL_LINK = [
 
 const DATA_FOOTER_MORE_INFOR = [
     {
-        "Help Info": [
-            {
-                title: "About Us",
-                link: "/"
-            },
-            {
-                title: "FAQs",
-                link: "/faqs"
-            },
-            {
-                title: "Contact Us",
-                link: "/contact"
-            },
-            {
-                title: "Services",
-                link: "/services"
-            },
-            {
-                title: "Blogs",
-                link: "/blogs"
-            },
+        "helpInfo": [
+            { title: "aboutUs", link: "/" },
+            { title: "faqs", link: "/faqs" },
+            { title: "contactUs", link: "/contact" },
+            { title: "services", link: "/services" },
+            { title: "blogs", link: "/blogs" },
         ]
     },
     {
-        "Top Collections": [
-            {
-                title: "Furniture",
-                link: "/furniture"
-            },
-            {
-                title: "Beds",
-                link: "/beds"
-            },
-            {
-                title: "Sofas",
-                link: "/sofas"
-            },
-            {
-                title: "Decor",
-                link: "/decor"
-            },
-            {
-                title: "Lighting",
-                link: "/lighting"
-            },
+        "topCollections": [
+            { title: "furniture", link: "/furniture" },
+            { title: "beds", link: "/beds" },
+            { title: "sofas", link: "/sofas" },
+            { title: "decor", link: "/decor" },
+            { title: "lighting", link: "/lighting" },
         ]
     },
     {
-        "Holidays": [
-            {
-                title: "Christmas Shop",
-                link: "/christmas-shop"
-            },
-            {
-                title: "Thanksgiving Shop",
-                link: "/thanksgiving-shop"
-            },
-            {
-                title: "Gifts Shop",
-                link: "/gifts-shop"
-            },
-            {
-                title: "Furniture",
-                link: "/furniture"
-            },
-            {
-                title: "Christmas Decor",
-                link: "/christmas-decor"
-            },
+        "holidays": [
+            { title: "christmasShop", link: "/christmas-shop" },
+            { title: "thanksgivingShop", link: "/thanksgiving-shop" },
+            { title: "giftsShop", link: "/gifts-shop" },
+            { title: "furniture", link: "/furniture" },
+            { title: "christmasDecor", link: "/christmas-decor" },
         ]
     },
 ];
 
 const DATA_FOOTER_PAYMENT = [
-    {
-        icon: 'visa',
-    },
-    {
-        icon: 'mastercard',
-    },
-    {
-        icon: 'american-express',
-    },
-    {
-        icon: 'paypal',
-    },
-    {
-        icon: 'dinners-club',
-    },
-    {
-        icon: 'discover',
-    },
+    { icon: 'visa' },
+    { icon: 'mastercard' },
+    { icon: 'american-express' },
+    { icon: 'paypal' },
+    { icon: 'dinners-club' },
+    { icon: 'discover' },
 ];
 
 
@@ -235,7 +178,6 @@ export {
     DATA_FOOTER_SOCIAL_LINK,
     DATA_FOOTER_MORE_INFOR,
     DATA_FOOTER_PAYMENT,
-
 };
 
 

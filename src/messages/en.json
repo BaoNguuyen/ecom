@@ -2,5 +2,78 @@
     "Home": {
         "title": "Hello World",
         "description": "Internationalization is working"
+    },
+    "Header": {
+        "navigate": {
+            "aboutUs": "About Us",
+            "contactUs": "Contact Us",
+            "freeDesignServices": "Free Design Services",
+            "faqs": "FAQs"
+        },
+        "contact": {
+            "email": "example@shopify.com",
+            "phone": "(+1) 12345678901",
+            "language": "English (USD $)"
+        },
+        "popup": {
+            "language": {
+                "label": "Language",
+                "english": "English",
+                "vietnamese": "Vietnamese"
+            },
+            "currency": {
+                "label": "Currency",
+                "usd": "United States (USD) $",
+                "vnd": "Vietnam (VND) đ"
+            },
+            "save": "Save"
+        }
+    },
+    "Footer": {
+        "contact": {
+            "needHelp": "Need help? Call now!",
+            "phone": "(+84) 123 4567",
+            "address": "Address: 75 9th Ave, New York, NY 10011-7006",
+            "email": "Email: example@shopify.com"
+        },
+        "newsletter": {
+            "title": "Get 5% off your first order!",
+            "description": "Learn more about special offers, promotions, events and more.",
+            "placeholder": "Your email",
+            "subscribe": "Subscribe"
+        },
+        "slogan": "Bring Comfort Home",
+        "benefits": {
+            "warranty": "5 Years Warranty",
+            "allInclusive": "All-inclusive Pricing",
+            "delivery": "Free Delivery",
+            "return": "100-Day Returns",
+            "assembly": "Free Assembly",
+            "disposal": "Disposal Service"
+        },
+        "helpInfo": {
+            "label": "Help Info",
+            "aboutUs": "About Us",
+            "faqs": "FAQs",
+            "contactUs": "Contact Us",
+            "services": "Services",
+            "blogs": "Blogs"
+        },
+        "topCollections": {
+            "label": "Top Collections",
+            "furniture": "Furniture",
+            "beds": "Beds",
+            "sofas": "Sofas",
+            "decor": "Decor",
+            "lighting": "Lighting"
+        },
+        "holidays": {
+            "label": "Holidays",
+            "christmasShop": "Christmas Shop",
+            "thanksgivingShop": "Thanksgiving Shop",
+            "giftsShop": "Gifts Shop",
+            "furniture": "Furniture",
+            "christmasDecor": "Christmas Decor"
+        }
     }
 }
