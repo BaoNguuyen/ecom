@@ -65,15 +65,13 @@ export default function Dropdown({ value, data, isOpen, handleModal, onToggle, t
                 {data.map((item, i) => (
                     <div
                         key={i}
-                        className="w-full flex cursor-pointer py-1 hover:bg-[rgb(var(--color-color-bg)/60%)]"
+                        className="w-full flex cursor-pointer py-1 rounded px-2 hover:bg-white/40 transition-colors duration-150"
                         onClick={() => handleModal(item, type)}
                     >
                         <p>{item.content}</p>
                     </div>
                 ))}
-
             </div>
-
         </div >
     )
 }
