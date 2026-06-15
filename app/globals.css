@@ -18,7 +18,7 @@
   --color-card: 255 255 255;
 
   --color-gradient-background: #551622;
-  --color-color-bg: #1b0309;
+  --color-color-bg: #1B0309;
 
 
   --color-neutral: rgb(10 10 10 / 1.0);
@@ -26,6 +26,7 @@
 
   --color-text-white: rgb(255 255 255 / 1.0);
   --color-text: rgb(227 221 220 / 1.0);
+  --color-text-secondary: #0A0A0A;
   --color-highlight: rgb(235 241 204 / 1.0);
 
 
@@ -36,6 +37,10 @@
   /* line border */
   --color-line-and-border: rgb(45 20 27 / 1.0);
 
+  /* button */
+  --color-secondary-button-hover-v1: #EBF1CC;
+  --color-secondary-button-v1: #702432;
+  --color-button-text-1: #E3DDDC;
 }
 
 
@@ -60,6 +65,10 @@
   /* line border */
   --color-line-and-border: rgb(13 43 46 / 1.0);
 
+  /* button */
+  --color-secondary-button-hover-v1: #dbd4c6;
+  --color-secondary-button-v1: #EAE5D9;
+  --color-button-text-1: #434242;
 
 }
 

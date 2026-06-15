@@ -2,6 +2,7 @@ import { useState } from "react";
 import Dropdown from "../common/dropdown";
 import { PopupItemType, PopupSectionType } from "./_data"
 import { useTranslations } from "next-intl";
+import CustomButton from "../common/button-custom";
 
 type PopupLayoutProps = {
     data: PopupSectionType[];
@@ -31,10 +32,10 @@ export default function PopupLayout({ data }: PopupLayoutProps) {
     }
 
     const handleSaveDate = () => {
-        console.log(value);
+        setNumberOpen(null)
+
     }
 
-    // Translate popup list items based on section and content key
     const getTranslatedList = (section: PopupSectionType) => {
         const sectionKey = section.name.toLowerCase() as 'language' | 'currency';
         return section.list.map(item => ({
@@ -43,7 +44,6 @@ export default function PopupLayout({ data }: PopupLayoutProps) {
         }));
     }
 
-    // Get translated display value for selected item
     const getSelectedContent = (section: PopupSectionType) => {
         const sectionKey = section.name.toLowerCase() as 'language' | 'currency';
         const selected = section.list.find(
@@ -76,9 +76,9 @@ export default function PopupLayout({ data }: PopupLayoutProps) {
                 )
             })}
 
-
-            <button
+            <CustomButton
+                text={t('popup.save')}
                 onClick={handleSaveDate}
-            >{t('popup.save')}</button>
+            />
         </div>)
 }
