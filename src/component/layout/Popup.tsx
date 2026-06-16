@@ -3,6 +3,7 @@ import Dropdown from "../common/dropdown";
 import { PopupItemType, PopupSectionType } from "./_data"
 import { useTranslations } from "next-intl";
 import CustomButton from "../common/button-custom";
+import { useLocaleSwitch } from "@/src/hooks/use-locale";
 
 type PopupLayoutProps = {
     data: PopupSectionType[];
@@ -22,6 +23,8 @@ export default function PopupLayout({ data }: PopupLayoutProps) {
 
     const t = useTranslations('Header');
 
+    const { switchLocale } = useLocaleSwitch()
+
     const handleModal = (data: PopupItemType, type: keyof ValueType) => {
         setValue((prev) => ({ ...prev, [type]: data.value }))
         setNumberOpen(null)
@@ -33,7 +36,7 @@ export default function PopupLayout({ data }: PopupLayoutProps) {
 
     const handleSaveDate = () => {
         setNumberOpen(null)
-
+        switchLocale(value.Language)
     }
 
     const getTranslatedList = (section: PopupSectionType) => {
@@ -68,9 +71,8 @@ export default function PopupLayout({ data }: PopupLayoutProps) {
                             value={getSelectedContent(section)}
                             data={getTranslatedList(section)}
                             isOpen={numberOpen === index}
-                            handleModal={handleModal}
+                            handleChooseItem={(item) => handleModal(item, section.name as keyof ValueType)}
                             onToggle={() => handleToggle(index)}
-                            type={section.name as keyof ValueType}
                         />
                     </div>
                 )

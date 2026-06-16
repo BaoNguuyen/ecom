@@ -6,10 +6,16 @@ import { DATA_HEADER_CONTACT, DATA_HEADER_NAVIGATE, PopupSectionType } from "./_
 import { useModal } from "@/src/providers";
 import PopupLayout from "./Popup";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
+import useTheme from "@/src/hooks/use-theme";
+import SearchComponent from "./Search";
 
 export default function Header() {
     const { toggleModal } = useModal()
     const t = useTranslations('Header')
+
+    const { resolvedTheme } = useTheme()
+    const logoTheme = resolvedTheme ?? 'dark'
 
     const handleModal = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, data?: PopupSectionType[]) => {
         const element = event.currentTarget;
@@ -26,7 +32,7 @@ export default function Header() {
     return (
         <header className="flex flex-col w-full">
 
-            <div className="container-v2 min-w-full h-[42px] flex items-center justify-between bg-gradient-background">
+            <div className="container-v2 min-w-full h-10.5 flex items-center justify-between bg-gradient-background">
                 <div className="flex items-center gap-4">
                     {DATA_HEADER_NAVIGATE.map((item) => (
                         <TextLink key={item.name} link={item.link} text={t(`navigate.${item.name}`)} />
@@ -54,8 +60,11 @@ export default function Header() {
                 </div>
             </div>
 
-            <div className="w-1/2 flex justify-end">
-                <h1 className="text-neutral">Header</h1>
+            <div className="container-v2 w-full flex justify-between items-center bg-gradient-background-1 py-4 gap-30">
+                <Image src={`/images/logo-${logoTheme}.avif`} width='130' height='51' alt="logo" className="bg-gradient-background-1"/>
+
+                <SearchComponent/>    
+                <div></div>    
             </div>
 
         </header>
