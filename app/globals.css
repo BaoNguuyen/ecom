@@ -19,6 +19,8 @@
 
   --color-gradient-background: #551622;
   --color-color-bg: #1B0309;
+  --color-gradient-background-1: #faf9f7;
+  --color-gradient-background-2: #f2f2f2;
 
 
   --color-neutral: rgb(10 10 10 / 1.0);
@@ -56,6 +58,9 @@
 
   --color-gradient-background: #113437;
   --color-color-bg: #113437;
+  --color-gradient-background-1: #0c1515;
+  --color-gradient-background-2: #2a3336;
+
 
   --color-neutral: rgb(168 40 60 / 1.0);
 
