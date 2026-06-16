@@ -138,7 +138,7 @@ export default function Footer() {
                     />
                 </div>
 
-                <p className="text-center text-[12px] font-dm-sans text-color-text">
+                <p className="text-center text-[12px] font-dm-sans text-text">
                     © 2026, <Link href='' className="underline">Maximize Vast</Link>. <Link href={""} className="underline">Powered by Shopify</Link>
                 </p>
 
