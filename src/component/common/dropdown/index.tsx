@@ -51,21 +51,23 @@ export default function Dropdown<T extends BaseItem>({
 
     const variantStyles = {
         popup: {
-            container: "bg-color-bg h-13",
+            container: "bg-color-bg h-13 text-text",
             button: "my-1 ring-[0.5px] ring-text rounded-lg",
             modal: "bg-color-bg ring-[0.5px] ring-text",
+            list: "hover:bg-white/40"
         },
         search: {
-            container: "bg-gradient-background-2 h-9 rounded-lg",
-            button: "",
+            container: "bg-gradient-background-2 h-9 rounded-lg min-w-37.5",
+            button: "text-text-tripple font-medium",
             modal: "bg-gradient-background-2 mt-0.5",
+            list: 'hover:bg-gradient-background-3'
         },
     };
 
     return (
         <div className={cn(
-            "flex text-text relative ",
-            variantStyles[mode].container )}
+            "flex relative ",
+            variantStyles[mode].container)}
         >
             <button
                 ref={buttonRef}
@@ -94,7 +96,10 @@ export default function Dropdown<T extends BaseItem>({
                 {data.map((item, i) => (
                     <div
                         key={i}
-                        className="w-full flex cursor-pointer py-1 rounded px-2 hover:bg-white/40 transition-colors duration-150"
+                        className={cn(
+                            'w-full flex cursor-pointer py-1 rounded px-2 transition-colors duration-150',
+                            variantStyles[mode].list
+                        )}
                         onClick={() => handleChooseItem(item)}
                     >
                         <p>{item.content}</p>
