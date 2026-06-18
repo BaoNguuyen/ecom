@@ -9,6 +9,7 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import useTheme from "@/src/hooks/use-theme";
 import SearchComponent from "./Search";
+import LogoutComponent from "./Logout";
 
 export default function Header() {
     const { toggleModal } = useModal()
@@ -64,7 +65,7 @@ export default function Header() {
                 <Image src={`/images/logo-${logoTheme}.avif`} width='130' height='51' alt="logo" className="bg-gradient-background-1"/>
 
                 <SearchComponent/>    
-                <div></div>    
+                <LogoutComponent/>
             </div>
 
         </header>
