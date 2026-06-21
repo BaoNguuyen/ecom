@@ -1,33 +1,25 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useTheme as useNextTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 export default function useTheme() {
     const { theme, setTheme, resolvedTheme } = useNextTheme();
-
-
-    const [isLoading, setIsLoading] = useState(true);
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        if (resolvedTheme) {
-            setIsLoading(false);
-        }
-    }, [resolvedTheme]);
+        setMounted(true);
+    }, []);
 
     const toggleTheme = () => {
-        setIsLoading(true);
-
-        setTimeout(() => {
-            setTheme(resolvedTheme === "dark" ? "light" : "dark");
-            setIsLoading(false);
-        }, 300);
+        setTheme(resolvedTheme === "dark" ? "light" : "dark");
     };
 
+    // Return undefined for theme values until after hydration so that
+    // every consumer renders the same HTML as the server (no mismatch).
     return {
-        theme,
-        resolvedTheme,
-        isLoading,
+        theme: mounted ? theme : undefined,
+        resolvedTheme: mounted ? resolvedTheme : undefined,
         toggleTheme,
         setTheme,
     };

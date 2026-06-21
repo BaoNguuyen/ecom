@@ -27,6 +27,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
   return (
     <html lang={locale} suppressHydrationWarning>
       <body
+        suppressHydrationWarning
         className={`min-h-screen bg-background antialiased ${inter.variable} ${dmSans.variable} ${smooch.variable}`}
       >
         <NextIntlClientProvider messages={messages}>

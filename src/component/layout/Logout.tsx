@@ -1,33 +1,73 @@
 import useTheme from "@/src/hooks/use-theme";
 import { cn } from "@/src/lib/utils";
-import { MoonIcon, LoaderCircle, SunIcon } from "lucide-react";
+import { MoonIcon, SunIcon } from "lucide-react";
 
-export default function LogoutComponent({ }) {
-    const { theme, isLoading, toggleTheme } = useTheme()
+export default function ThemeToggle() {
+    const { theme, toggleTheme } = useTheme();
 
 
     return (
-        <div className="">
-            <div
-                className="relative flex gap-2.5 items-center ring-[0.5px] ring-text p-1.5 rounded-2xl"
-                onClick={() => toggleTheme()}
-            >
-                <MoonIcon width={20} height={20}
-                    className={cn()} />
-                <SunIcon width={20} height={20}
-                    className={cn()} />
+        <button
+            type="button"
+            onClick={toggleTheme}
+            className="
+                relative
+                flex
+                items-center
+                w-17
+                h-9.5
+                rounded-full
+                p-1
+                cursor-pointer
+                bg-gradient-background-1
+                ring-[0.5px]
+                ring-text-tripple/20
+                backdrop-blur-sm
+                transition-all
+                duration-300
+            "
+        >
+            <div className="relative z-10 flex w-full items-center justify-between px-2 gap-[10.5px]">
+                <SunIcon
+                    size={15}
+                    className={cn(
+                        "transition-all duration-300",
+                        theme === "light"
+                            ? "opacity-100 scale-100"
+                            : "opacity-40 scale-90"
+                    )}
+                />
 
-                <div className={cn(
-                    "flex items-center justify-center w-6.5 h-6 rounded-full bg-spin-background",
-                    "absolute top-1 left-1",
-                    // theme === 'dark' ? 'left-0' : 'right-1',
-                )} />
+                <MoonIcon
+                    size={15}
+                    className={cn(
+                        "transition-all duration-300",
+                        theme === "dark"
+                            ? "opacity-100 scale-100"
+                            : "opacity-40 scale-90"
+                    )}
+                />
 
-                {/* <div className="flex items-center justify-center w-6 h-6 rounded-full bg-spin-background">
-                    {isLoading && <LoaderCircle width={30} height={30} className=" size-4 animate-spin" />}
-                </div> */}
 
             </div>
-        </div>
-    )
+
+            <div
+                className={cn(
+                    `
+                    absolute
+                    top-[7px]
+                    left-2
+                    w-6
+                    h-6
+                    rounded-full
+                    bg-spin-background
+                    border border-white/10
+                    shadow-lg
+                    transition-all duration-300
+                    `,
+                    theme === "dark" && "translate-x-6"
+                )}
+            />
+        </button>
+    );
 }

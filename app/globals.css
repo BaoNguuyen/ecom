@@ -14,7 +14,7 @@
   --color-gradient-background-3: #43424230;
 
   /* spin background */
-  --color-spin-background: #fff3;
+  --color-spin-background: rgba(255, 255, 255, 0.9);
 
   --color-text-white: rgb(255 255 255 / 1.0);
   --color-text: rgb(227 221 220 / 1.0);
@@ -45,6 +45,9 @@
   --color-gradient-background-1: #0c1515;
   --color-gradient-background-2: #2a3336;
   --color-gradient-background-3: #FFFFFF66;
+
+  /* spin background */
+  --color-spin-background: rgba(255, 255, 255, 0.15);
 
   --color-text: rgb(255 255 255 / 1.0);
   --color-highlight: rgb(235 241 204 / 1.0);

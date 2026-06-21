@@ -16,7 +16,7 @@ export default function Header() {
     const t = useTranslations('Header')
 
     const { resolvedTheme } = useTheme()
-    const logoTheme = resolvedTheme ?? 'dark'
+    const logoTheme = resolvedTheme ?? 'light'
 
     const handleModal = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, data?: PopupSectionType[]) => {
         const element = event.currentTarget;
