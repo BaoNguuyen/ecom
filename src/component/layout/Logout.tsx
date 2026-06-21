@@ -14,7 +14,7 @@ export default function ThemeToggle() {
                 relative
                 flex
                 items-center
-                w-17
+                w-18.75
                 h-9.5
                 rounded-full
                 p-1
@@ -29,7 +29,7 @@ export default function ThemeToggle() {
         >
             <div className="relative z-10 flex w-full items-center justify-between px-2 gap-[10.5px]">
                 <SunIcon
-                    size={15}
+                    size={30}
                     className={cn(
                         "transition-all duration-300",
                         theme === "light"
@@ -39,7 +39,7 @@ export default function ThemeToggle() {
                 />
 
                 <MoonIcon
-                    size={15}
+                    size={30}
                     className={cn(
                         "transition-all duration-300",
                         theme === "dark"
@@ -55,17 +55,17 @@ export default function ThemeToggle() {
                 className={cn(
                     `
                     absolute
-                    top-[7px]
+                    top-1.25
                     left-2
-                    w-6
-                    h-6
+                    w-7
+                    h-7
                     rounded-full
                     bg-spin-background
                     border border-white/10
                     shadow-lg
                     transition-all duration-300
                     `,
-                    theme === "dark" && "translate-x-6"
+                    theme === "dark" && "translate-x-7.5"
                 )}
             />
         </button>
