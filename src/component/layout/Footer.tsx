@@ -19,6 +19,7 @@ export default function Footer() {
     const StartIcon = dataLanguage.icon
 
     const handleModal = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, data: PopupSectionType[]) => {
+        event.stopPropagation();
         const element = event.currentTarget;
         const rect = element.getBoundingClientRect();
 

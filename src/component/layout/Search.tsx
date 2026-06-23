@@ -72,6 +72,7 @@ export default function SearchComponent({ }) {
                 isOpen={isOpen}
                 handleChooseItem={(item) => handleChooseItem(item)}
                 onToggle={() => setIsOpen(prev => !prev)}
+                onClose={() => setIsOpen(false)}
                 mode="search"
             />
 

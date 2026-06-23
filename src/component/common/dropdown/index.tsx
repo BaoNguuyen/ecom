@@ -1,4 +1,4 @@
-import { useRef, useState, type Ref } from "react";
+import { useRef, useState, useEffect, type Ref } from "react";
 import { cn } from "@/src/lib/utils";
 import { ChevronDown } from "lucide-react";
 
@@ -14,6 +14,7 @@ type DropdownProps<T extends BaseItem> = {
     data: T[];
     handleChooseItem: (item: T) => void;
     onToggle: () => void;
+    onClose?: () => void;
     isOpen: boolean;
     mode?: 'popup' | 'search';
 };
@@ -25,8 +26,10 @@ export default function Dropdown<T extends BaseItem>({
     isOpen,
     handleChooseItem,
     onToggle,
+    onClose,
     mode = 'popup'
 }: DropdownProps<T>) {
+    const containerRef = useRef<HTMLDivElement>(null);
     const [placement, setPlacement] = useState<"top" | "bottom">("bottom");
 
     const buttonRef = useRef<HTMLButtonElement>(null);
@@ -48,6 +51,27 @@ export default function Dropdown<T extends BaseItem>({
         onToggle()
     };
 
+    useEffect(() => {
+        if (!isOpen || !onClose) return;
+
+        const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+            if (
+                containerRef.current &&
+                !containerRef.current.contains(event.target as Node)
+            ) {
+                onClose();
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        document.addEventListener("touchstart", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+            document.removeEventListener("touchstart", handleClickOutside);
+        };
+    }, [isOpen, onClose]);
+
 
     const variantStyles = {
         popup: {
@@ -65,9 +89,12 @@ export default function Dropdown<T extends BaseItem>({
     };
 
     return (
-        <div className={cn(
-            "flex relative ",
-            variantStyles[mode].container)}
+        <div 
+            ref={containerRef}
+            className={cn(
+                "flex relative ",
+                variantStyles[mode].container
+            )}
         >
             <button
                 ref={buttonRef}

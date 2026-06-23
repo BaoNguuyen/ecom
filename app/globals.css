@@ -20,6 +20,7 @@
   --color-text: rgb(227 221 220 / 1.0);
   --color-text-secondary: #0A0A0A;
   --color-text-tripple: #434242;
+  --color-text-quara: #0a0a0a99;
 
   --color-highlight: rgb(235 241 204 / 1.0);
 
@@ -52,6 +53,7 @@
   --color-text: rgb(255 255 255 / 1.0);
   --color-highlight: rgb(235 241 204 / 1.0);
   --color-text-tripple: #e3dddc;
+  --color-text-quara: #242c2c;
 
 
   /* line border */

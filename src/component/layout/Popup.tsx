@@ -58,12 +58,12 @@ export default function PopupLayout({ data }: PopupLayoutProps) {
 
     return (
         <div
-            className="flex flex-col gap-4 bg-color-bg ring-[0.5px] ring-[var(--color-text)] shadow-xl rounded-lg p-2 min-w-[200px]"
+            className="flex flex-col gap-4 bg-color-bg ring-[0.5px] ring-text shadow-xl rounded-lg p-2 min-w-50"
         >
             {data.length && data?.map((section, index) => {
                 return (
                     <div key={index} className="w-full flex flex-col ">
-                        <span className="text-sm leading-[20px] font-bold text-[var(--color-text)] mb-2">
+                        <span className="text-sm leading-5 font-bold text-text mb-2">
                             {t(`popup.${section.name.toLowerCase() as 'language' | 'currency'}.label`)}
                         </span>
 
@@ -73,6 +73,7 @@ export default function PopupLayout({ data }: PopupLayoutProps) {
                             isOpen={numberOpen === index}
                             handleChooseItem={(item) => handleModal(item, section.name as keyof ValueType)}
                             onToggle={() => handleToggle(index)}
+                            onClose={() => setNumberOpen(null)}
                         />
                     </div>
                 )

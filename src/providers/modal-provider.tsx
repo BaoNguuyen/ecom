@@ -6,6 +6,7 @@ import {
     useEffect,
     useState,
     ReactNode,
+    useRef,
 } from "react";
 
 type Placement =
@@ -36,55 +37,69 @@ export function ModalProvider({ children }: { children: ReactNode }) {
     const [isOpen, setIsOpen] = useState(false);
     const [content, setContent] = useState<ReactNode | null>(null);
     const [styleProps, setStyleProps] = useState<React.CSSProperties>({});
+    const modalRef = useRef<HTMLDivElement>(null);
 
     const openModal = () => setIsOpen(true);
     const closeModal = () => setIsOpen(false);
 
-    const toggleModal = (newContent?: ReactNode, options?: ModalOptions) => {
-        if (newContent) {
-            setContent(newContent);
-        }
+    const computeStyles = (options: ModalOptions) => {
+        const { rect, placement = "bottom-left", offset = 8 } = options;
+        let computedStyles: React.CSSProperties = { position: "fixed" };
 
-        if (options) {
-            const { rect, placement = "bottom-left", offset = 8 } = options;
-            let computedStyles: React.CSSProperties = { position: "fixed" };
-
-            if (placement === "center") {
-                computedStyles = {
-                    position: "fixed",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                };
-            } else if (rect) {
-                switch (placement) {
-                    case "bottom-left":
-                        computedStyles.top = rect.bottom + offset;
-                        computedStyles.left = rect.left;
-                        break;
-                    case "bottom-right":
-                        computedStyles.top = rect.bottom + offset;
-                        computedStyles.right = window.innerWidth - rect.right;
-                        break;
-                    case "bottom-center":
-                        computedStyles.top = rect.bottom + offset;
-                        computedStyles.left = rect.left + rect.width / 2;
-                        computedStyles.transform = "translateX(-50%)";
-                        break;
-                    case "top-left":
-                        computedStyles.bottom = window.innerHeight - rect.top + offset;
-                        computedStyles.left = rect.left;
-                        break;
-                    case "top-right":
-                        computedStyles.bottom = window.innerHeight - rect.top + offset;
-                        computedStyles.right = window.innerWidth - rect.right;
-                        break;
-                }
+        if (placement === "center") {
+            computedStyles = {
+                position: "fixed",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+            };
+        } else if (rect) {
+            switch (placement) {
+                case "bottom-left":
+                    computedStyles.top = rect.bottom + offset;
+                    computedStyles.left = rect.left;
+                    break;
+                case "bottom-right":
+                    computedStyles.top = rect.bottom + offset;
+                    computedStyles.right = window.innerWidth - rect.right;
+                    break;
+                case "bottom-center":
+                    computedStyles.top = rect.bottom + offset;
+                    computedStyles.left = rect.left + rect.width / 2;
+                    computedStyles.transform = "translateX(-50%)";
+                    break;
+                case "top-left":
+                    computedStyles.bottom = window.innerHeight - rect.top + offset;
+                    computedStyles.left = rect.left;
+                    break;
+                case "top-right":
+                    computedStyles.bottom = window.innerHeight - rect.top + offset;
+                    computedStyles.right = window.innerWidth - rect.right;
+                    break;
             }
-            setStyleProps(computedStyles);
         }
+        setStyleProps(computedStyles);
+    };
 
-        setIsOpen((prev) => !prev);
+    const toggleModal = (newContent?: ReactNode, options?: ModalOptions) => {
+        if (!isOpen) {
+            if (newContent) setContent(newContent);
+            if (options) computeStyles(options);
+            setIsOpen(true);
+        } else {
+            // Check if clicking the same button/type to toggle off, or clicking another button to switch content
+            const isSameType =
+                content &&
+                newContent &&
+                (content as any).type === (newContent as any).type;
+
+            if (isSameType) {
+                setIsOpen(false);
+            } else {
+                if (newContent) setContent(newContent);
+                if (options) computeStyles(options);
+            }
+        }
     };
 
     useEffect(() => {
@@ -94,15 +109,29 @@ export function ModalProvider({ children }: { children: ReactNode }) {
             closeModal();
         };
 
+        const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+            if (
+                modalRef.current &&
+                !modalRef.current.contains(event.target as Node)
+            ) {
+                closeModal();
+            }
+        };
+
         window.addEventListener("scroll", handleScroll, {
             passive: true,
             capture: true,
         });
 
+        document.addEventListener("mousedown", handleClickOutside);
+        document.addEventListener("touchstart", handleClickOutside);
+
         return () => {
             window.removeEventListener("scroll", handleScroll, {
                 capture: true,
             });
+            document.removeEventListener("mousedown", handleClickOutside);
+            document.removeEventListener("touchstart", handleClickOutside);
         };
     }, [isOpen]);
 
@@ -118,16 +147,13 @@ export function ModalProvider({ children }: { children: ReactNode }) {
             {children}
 
             {isOpen && content && (
-                <>
-                    <div className="fixed inset-0 z-40" onClick={closeModal} />
-
-                    <div
-                        className="fixed z-50 animate-in fade-in zoom-in-95 duration-200"
-                        style={styleProps}
-                    >
-                        {content}
-                    </div>
-                </>
+                <div
+                    ref={modalRef}
+                    className="fixed z-50 animate-in fade-in zoom-in-95 duration-200"
+                    style={styleProps}
+                >
+                    {content}
+                </div>
             )}
         </ModalContext.Provider>
     )
